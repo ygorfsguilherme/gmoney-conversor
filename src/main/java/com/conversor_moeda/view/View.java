@@ -5,12 +5,14 @@ import java.text.DecimalFormat;
 
 import javax.swing.*;
 
+import com.conversor_moeda.control.InputNumber;
 import com.conversor_moeda.control.convertMoney;
 
 public class View {
     String[] moeda = { "Real", "Dolar", "Euro" };
     String[] moeda2 = { "Real", "Dolar", "Euro" };
     String pathLogo = "logo.png";
+
     DecimalFormat df = new DecimalFormat("#,##0.00");
 
     private JPanel panel = new JPanel(null);
@@ -19,8 +21,11 @@ public class View {
     private JComboBox<String> comboBox2 = new JComboBox<>(moeda2);
     private JButton btnConvert = new JButton("Converter");
     private JLabel Logo = new JLabel(new ImageIcon(getClass().getResource(pathLogo)));
-    private JTextField toInputConvert = new JTextField();
-    private JTextField fromInputConvert = new JTextField("0.00");
+    private JTextField fromInputConvert = new JTextField();
+    private JTextField toInputConvert = new JTextField("0.00");
+
+    private JLabel fromLabel = new JLabel("De:");
+    private JLabel toLabel = new JLabel("Para:");
 
     public void Initials() {
         // Window
@@ -38,6 +43,10 @@ public class View {
 
         // Input
         Input();
+        fromInputConvert.setDocument(new InputNumber());
+
+        // Label
+        Label();
     }
 
     private void Window() {
@@ -54,13 +63,21 @@ public class View {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 String moeda = comboBox.getSelectedItem().toString();
                 String moeda2 = comboBox2.getSelectedItem().toString();
-                String valor = toInputConvert.getText();
+                String valor = fromInputConvert.getText();
                 convertMoney convertMoneyValue = new convertMoney();
                 String result = df.format(convertMoneyValue.getConvertMoney(moeda, moeda2, Double.parseDouble(valor)));
-                fromInputConvert.setText(result);
+                toInputConvert.setText(result);
             }
         });
     };
+
+    private void Label() {
+        fromLabel.setBounds(10, 80, 50, 20);
+        panel.add(fromLabel);
+
+        toLabel.setBounds(10, 170, 50, 20);
+        panel.add(toLabel);
+    }
 
     private void Button() {
         btnConvert.setBounds(10, 295, 360, 45);
@@ -69,7 +86,7 @@ public class View {
 
     private void Logo() {
         // Logo
-        Logo.setBounds(150, 0, 100, 100);
+        Logo.setBounds(140, 0, 100, 100);
         panel.add(Logo);
     }
 
@@ -79,19 +96,20 @@ public class View {
         panel.add(comboBox);
 
         // ComboBox2
-        comboBox2.setBounds(10, 160, 100, 30);
+        comboBox2.setBounds(10, 200, 100, 30);
         panel.add(comboBox2);
     }
 
     private void Input() {
         // Input
-        toInputConvert.setBounds(120, 110, 130, 30);
-        toInputConvert.setHorizontalAlignment(JTextField.CENTER);
-        panel.add(toInputConvert);
-
-        // Input2
-        fromInputConvert.setBounds(120, 160, 130, 30);
+        fromInputConvert.setBounds(120, 110, 130, 30);
         fromInputConvert.setHorizontalAlignment(JTextField.CENTER);
         panel.add(fromInputConvert);
+
+        // Input2
+        toInputConvert.setBounds(120, 200, 130, 30);
+        toInputConvert.setHorizontalAlignment(JTextField.CENTER);
+        toInputConvert.setEditable(false);
+        panel.add(toInputConvert);
     }
 }

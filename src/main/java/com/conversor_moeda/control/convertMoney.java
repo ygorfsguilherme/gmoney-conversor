@@ -5,26 +5,26 @@ public class convertMoney {
     private double euro = 5.12;
     private double real = 1.00;
 
-    public double getConvertMoney(String toConvert, String fromConvert, double value) {
-        if (toConvert == "Dolar") {
-            if (fromConvert.equals("Real")) {
+    public double getConvertMoney(String fromConvert, String toConvert, double value) {
+        if (fromConvert.equals("Dolar")) {
+            if (toConvert.equals("Real")) {
                 return value * dolar;
-            } else if (fromConvert.equals("Euro")) {
+            } else if (toConvert.equals("Euro")) {
                 return value * dolar / euro;
             }
-        } else if (toConvert.equals("Euro")) {
-            if (fromConvert.equals("Real")) {
+        } else if (fromConvert.equals("Euro")) {
+            if (toConvert.equals("Real")) {
                 return value * euro * real;
-            } else if (fromConvert.equals("Dolar")) {
+            } else if (toConvert.equals("Dolar")) {
                 return value * euro / dolar;
             }
-        } else if (toConvert.equals("Real")) {
-            if (fromConvert.equals("Dolar")) {
+        } else if (fromConvert.equals("Real")) {
+            if (toConvert.equals("Dolar")) {
                 return value * real / dolar;
-            } else if (fromConvert.equals("Euro")) {
+            } else if (toConvert.equals("Euro")) {
                 return value * real / euro;
             }
         }
-        return 0;
+        return value;
     }
 }
