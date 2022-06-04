@@ -1,28 +1,17 @@
 package com.conversor_moeda.view;
 
-import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
-
 import javax.swing.*;
 
 import com.conversor_moeda.control.InputNumber;
-import com.conversor_moeda.control.convertMoney;
 
-public class View {
-    String[] moeda = { "Real", "Dolar", "Euro" };
-    String[] moeda2 = { "Real", "Dolar", "Euro" };
-    String pathLogo = "logo.png";
-
-    DecimalFormat df = new DecimalFormat("#,##0.00");
-
+public abstract class View {
     private JPanel panel = new JPanel(null);
     private JFrame window = new JFrame("Conversor de Moedas");
-    private JComboBox<String> comboBox = new JComboBox<>(moeda);
-    private JComboBox<String> comboBox2 = new JComboBox<>(moeda2);
-    private JButton btnConvert = new JButton("Converter");
-    private JLabel Logo = new JLabel(new ImageIcon(getClass().getResource(pathLogo)));
-    private JTextField fromInputConvert = new JTextField();
-    private JTextField toInputConvert = new JTextField("0.00");
+    protected JButton btnConvert = new JButton("Converter");
+    protected JTextField fromInputConvert = new JTextField();
+    protected JTextField toInputConvert = new JTextField("0.00");
+    private JComboBox<String> fromSelect = new JComboBox<>();
+    private JComboBox<String> toSelect = new JComboBox<>();
 
     private JLabel fromLabel = new JLabel("De:");
     private JLabel toLabel = new JLabel("Para:");
@@ -31,22 +20,19 @@ public class View {
         // Window
         Window();
 
-        // Logo
-        Logo();
-
-        // ComboBox
-        ComboBox();
+        // Label
+        Label();
 
         // Button
         Button();
         btnConvertAction();
 
+        // ComboBox
+        ComboBox();
+
         // Input
         Input();
         fromInputConvert.setDocument(new InputNumber());
-
-        // Label
-        Label();
     }
 
     private void Window() {
@@ -58,18 +44,7 @@ public class View {
         window.setVisible(true);
     }
 
-    private void btnConvertAction() {
-        btnConvert.addActionListener(new ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                String moeda = comboBox.getSelectedItem().toString();
-                String moeda2 = comboBox2.getSelectedItem().toString();
-                String valor = fromInputConvert.getText();
-                convertMoney convertMoneyValue = new convertMoney();
-                String result = df.format(convertMoneyValue.getConvertMoney(moeda, moeda2, Double.parseDouble(valor)));
-                toInputConvert.setText(result);
-            }
-        });
-    };
+    protected abstract void btnConvertAction();
 
     private void Label() {
         fromLabel.setBounds(10, 80, 50, 20);
@@ -84,20 +59,36 @@ public class View {
         panel.add(btnConvert);
     }
 
-    private void Logo() {
-        // Logo
+    protected void setLogo(String pathLogo) {
+        JLabel Logo = new JLabel(new ImageIcon(getClass().getResource(pathLogo)));
         Logo.setBounds(140, 0, 100, 100);
         panel.add(Logo);
     }
 
-    private void ComboBox() {
+    protected void ComboBox() {
         // ComboBox
-        comboBox.setBounds(10, 110, 100, 30);
-        panel.add(comboBox);
+        fromSelect.setBounds(10, 110, 100, 30);
+        panel.add(fromSelect);
 
         // ComboBox2
-        comboBox2.setBounds(10, 200, 100, 30);
-        panel.add(comboBox2);
+        toSelect.setBounds(10, 200, 100, 30);
+        panel.add(toSelect);
+    }
+
+    protected void setComFromSelect(String[] from) {
+        fromSelect.setModel(new javax.swing.DefaultComboBoxModel<>(from));
+    }
+
+    protected String getComFromSelect() {
+        return fromSelect.getSelectedItem().toString();
+    }
+
+    protected void setComToSelect(String[] to) {
+        toSelect.setModel(new javax.swing.DefaultComboBoxModel<>(to));
+    }
+
+    protected String getComToSelect() {
+        return toSelect.getSelectedItem().toString();
     }
 
     private void Input() {
