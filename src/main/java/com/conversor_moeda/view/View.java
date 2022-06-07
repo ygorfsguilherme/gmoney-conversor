@@ -5,48 +5,42 @@ import javax.swing.*;
 import com.conversor_moeda.control.InputNumber;
 
 public abstract class View {
-    private JPanel panel = new JPanel(null);
-    private JFrame window = new JFrame("Conversor de Moedas");
-    protected JButton btnConvert = new JButton("Converter");
-    protected JTextField fromInputConvert = new JTextField();
-    protected JTextField toInputConvert = new JTextField("0.00");
-    private JComboBox<String> fromSelect = new JComboBox<>();
-    private JComboBox<String> toSelect = new JComboBox<>();
+    private JFrame window = new JFrame("GMoney - Conversor");
+
+    protected JPanel panelMoney = new JPanel(null);
+    protected JPanel panelDegrees = new JPanel(null);
 
     private JLabel fromLabel = new JLabel("De:");
     private JLabel toLabel = new JLabel("Para:");
 
+    public JTextField fromInputConvert = new JTextField();
+    private JTextField toInputConvert = new JTextField("0.00");
+
+    private JComboBox<String> fromSelect = new JComboBox<>();
+    private JComboBox<String> toSelect = new JComboBox<>();
+
+    protected JTabbedPane tabs = new JTabbedPane();
+
     public void Initials() {
-        // Window
         Window();
-
-        // Label
-        Label();
-
-        // Button
-        Button();
-        btnConvertAction();
-
-        // ComboBox
-        ComboBox();
-
-        // Input
-        Input();
-        fromInputConvert.setDocument(new InputNumber());
+        Tabs();
     }
 
     private void Window() {
-        window.setSize(380, 400);
+        window.setSize(380, 430);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLocationRelativeTo(null);
-        window.add(panel);
+        window.add(tabs);
         window.setResizable(false);
         window.setVisible(true);
     }
 
-    protected abstract void btnConvertAction();
+    private void Tabs() {
+        tabs.addTab("Money", panelMoney);
+        tabs.addTab("Degrees", panelDegrees);
+    }
 
-    private void Label() {
+    protected void Label(JPanel panel) {
         fromLabel.setBounds(10, 80, 50, 20);
         panel.add(fromLabel);
 
@@ -54,23 +48,35 @@ public abstract class View {
         panel.add(toLabel);
     }
 
-    private void Button() {
-        btnConvert.setBounds(10, 295, 360, 45);
-        panel.add(btnConvert);
-    }
-
-    protected void setLogo(String pathLogo) {
+    protected void Logo(String pathLogo, JPanel panel) {
         JLabel Logo = new JLabel(new ImageIcon(getClass().getResource(pathLogo)));
         Logo.setBounds(140, 0, 100, 100);
         panel.add(Logo);
     }
 
-    protected void ComboBox() {
+    protected void Input(JPanel panel) {
+        // Input
+        fromInputConvert.setBounds(120, 110, 130, 30);
+        fromInputConvert.setHorizontalAlignment(JTextField.CENTER);
+        fromInputConvert.setDocument(new InputNumber());
+        panel.add(fromInputConvert);
+
+        // Input2
+        toInputConvert.setBounds(120, 200, 130, 30);
+        toInputConvert.setHorizontalAlignment(JTextField.CENTER);
+        toInputConvert.setDocument(new InputNumber());
+        toInputConvert.setEditable(false);
+        panel.add(toInputConvert);
+    }
+
+    protected void ComboBox(JPanel panel, String[] from, String[] to) {
         // ComboBox
+        fromSelect.setModel(new javax.swing.DefaultComboBoxModel<>(from));
         fromSelect.setBounds(10, 110, 100, 30);
         panel.add(fromSelect);
 
         // ComboBox2
+        toSelect.setModel(new javax.swing.DefaultComboBoxModel<>(to));
         toSelect.setBounds(10, 200, 100, 30);
         panel.add(toSelect);
     }
@@ -91,16 +97,8 @@ public abstract class View {
         return toSelect.getSelectedItem().toString();
     }
 
-    private void Input() {
-        // Input
-        fromInputConvert.setBounds(120, 110, 130, 30);
-        fromInputConvert.setHorizontalAlignment(JTextField.CENTER);
-        panel.add(fromInputConvert);
-
-        // Input2
-        toInputConvert.setBounds(120, 200, 130, 30);
-        toInputConvert.setHorizontalAlignment(JTextField.CENTER);
-        toInputConvert.setEditable(false);
-        panel.add(toInputConvert);
+    public void setToInputConvert(String value) {
+        this.toInputConvert.setText(value);
     }
+
 }
