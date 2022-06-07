@@ -3,34 +3,35 @@ package com.conversor_moeda.control;
 import java.io.IOException;
 
 public class convertMoney {
-    double USD = Double.parseDouble(getMoney.getMoeda("USD"));
-    double EUR = Double.parseDouble(getMoney.getMoeda("EUR"));
-    double BRL = 1.00;
+    double Dolar = Double.parseDouble(getMoney.getMoeda("USD"));
+    double Euro = Double.parseDouble(getMoney.getMoeda("EUR"));
+    double Real = 1.00;
 
-    public convertMoney() throws NumberFormatException, IOException, InterruptedException {
+    public convertMoney() throws IOException, InterruptedException {
 
     }
 
     public double getConvertMoney(String fromConvert, String toConvert, double value) {
         if (fromConvert.equals("Dolar")) {
             if (toConvert.equals("Real")) {
-                return value * USD;
+                return value * Dolar;
             } else if (toConvert.equals("Euro")) {
-                return value * USD / EUR;
+                return value * Dolar / Euro;
             }
         } else if (fromConvert.equals("Euro")) {
             if (toConvert.equals("Real")) {
-                return value * EUR * BRL;
+                return value * Euro * Real;
             } else if (toConvert.equals("Dolar")) {
-                return value * EUR / USD;
+                return value * Euro / Dolar;
             }
         } else if (fromConvert.equals("Real")) {
             if (toConvert.equals("Dolar")) {
-                return value * BRL / USD;
+                return value * Real / Dolar;
             } else if (toConvert.equals("Euro")) {
-                return value * BRL / EUR;
+                return value * Real / Euro;
             }
         }
+
         return value;
     }
 }

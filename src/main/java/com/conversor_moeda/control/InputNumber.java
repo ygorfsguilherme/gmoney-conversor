@@ -1,7 +1,5 @@
 package com.conversor_moeda.control;
 
-import java.util.regex.Pattern;
-
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
