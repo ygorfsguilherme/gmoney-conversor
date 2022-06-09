@@ -22,6 +22,6 @@ No terminal/cmd
 java -jar gmoney-conversor.jar
 ```
 
-<cemter>![Abas Moeda](image/tab-money.png)<center>
+<center>![Abas Moeda](image/tab-money.png)<center>
 
 <center>![Abas Temperatura](image/tab-temperature.png)<center>
