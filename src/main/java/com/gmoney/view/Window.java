@@ -1,4 +1,4 @@
-package com.conversor_moeda.view;
+package com.gmoney.view;
 
 import javax.swing.*;
 

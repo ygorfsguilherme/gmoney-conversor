@@ -1,4 +1,4 @@
-package com.conversor_moeda.view;
+package com.gmoney.view;
 
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
@@ -7,7 +7,7 @@ import java.math.RoundingMode;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import com.conversor_moeda.control.converterDegrees;
+import com.gmoney.control.converterDegrees;
 
 public class ViewTabDegrees extends View {
     private JPanel panelDegrees = new JPanel();

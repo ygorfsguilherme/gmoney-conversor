@@ -1,8 +1,8 @@
-package com.conversor_moeda.view;
+package com.gmoney.view;
 
 import javax.swing.*;
 
-import com.conversor_moeda.control.InputNumber;
+import com.gmoney.control.InputNumber;
 
 public abstract class View {
 

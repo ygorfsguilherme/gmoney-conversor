@@ -1,4 +1,4 @@
-package com.conversor_moeda.control;
+package com.gmoney.control;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;

@@ -1,4 +1,4 @@
-package com.conversor_moeda.view;
+package com.gmoney.view;
 
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.math.RoundingMode;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import com.conversor_moeda.control.convertMoney;
+import com.gmoney.control.convertMoney;
 
 public class ViewTabMoney extends View {
     private JPanel panelMoney = new JPanel();

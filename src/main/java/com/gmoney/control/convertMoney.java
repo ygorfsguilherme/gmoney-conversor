@@ -1,4 +1,4 @@
-package com.conversor_moeda.control;
+package com.gmoney.control;
 
 import java.io.IOException;
 

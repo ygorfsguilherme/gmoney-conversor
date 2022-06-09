@@ -1,4 +1,4 @@
-package com.conversor_moeda.control;
+package com.gmoney.control;
 
 public class converterDegrees {
     public double getConverterDegrees(String fromDegrees, String toDegrees, double value) {
