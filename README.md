@@ -4,7 +4,7 @@ GMoney - Conversor é um conversor de moeda além de converter para alguns tipos
 
 # Ferramentas Utilizadas
 
-Ele foi criado inteiramente em java utilizado a biblioteca swing do mesmo, para ter sempre a catação das moedas atualizada foi utilizada a API Awesome para mas informações sobre a API aqui.
+Ele foi criado inteiramente em java utilizado a biblioteca swing do mesmo, para ter sempre a catação das moedas atualizada foi utilizada a API Awesome para mas informações sobre a API [aqui](https://docs.awesomeapi.com.br/api-de-moedas)
 
 # Objetivo
 
