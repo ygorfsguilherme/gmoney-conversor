@@ -1,7 +1,6 @@
 package com.gmoney.view;
 
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import javax.swing.JPanel;
@@ -37,20 +36,14 @@ public class ViewTabMoney extends View {
                 String fromValue = getFromInputConvert();
                 convertMoney convertMoneyValue;
 
-                try {
-                    convertMoneyValue = new convertMoney();
-                    double valorFinal = convertMoneyValue.getConvertMoney(fromMoney, toMoney,
-                            Double.parseDouble(fromValue));
+                convertMoneyValue = new convertMoney();
+                double valorFinal = convertMoneyValue.getConvertMoney(fromMoney, toMoney,
+                        Double.parseDouble(fromValue));
 
-                    BigDecimal result = new BigDecimal(Double.toString(valorFinal));
-                    result = result.setScale(2, RoundingMode.CEILING);
+                BigDecimal result = new BigDecimal(Double.toString(valorFinal));
+                result = result.setScale(2, RoundingMode.CEILING);
 
-                    setToInputConvert(Double.toString(result.doubleValue()));
-                } catch (IOException e1) {
-                    setToInputConvert("0.000000");
-                } catch (InterruptedException e1) {
-                    setToInputConvert("0.000000");
-                }
+                setToInputConvert(Double.toString(result.doubleValue()));
             }
         });
     }

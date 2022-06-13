@@ -1,13 +1,11 @@
 package com.gmoney.control;
 
-import java.io.IOException;
-
 public class convertMoney {
-    double Dolar = Double.parseDouble(getMoney.getMoeda("USD"));
-    double Euro = Double.parseDouble(getMoney.getMoeda("EUR"));
+    double Dolar = getMoney.getMoeda("USD");
+    double Euro = getMoney.getMoeda("EUR");
     double Real = 1.00;
 
-    public convertMoney() throws IOException, InterruptedException {
+    public convertMoney() {
 
     }
 
