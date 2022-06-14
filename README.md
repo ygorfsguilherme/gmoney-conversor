@@ -12,7 +12,7 @@ A sua criação e totalmente educacional do projeto ONE - Oracle Next Education 
 
 # Como Executar
 
-Existe uma versão em .jar empacota que e possível baixar [aqui](https://github.com/ygorfsguilherme/gmoney-conversor/releases) ou na opção realese do github.
+Existe uma versão em .jar empacotada que é possível baixar [aqui](https://github.com/ygorfsguilherme/gmoney-conversor/releases) ou na opção releases do github.
 
 _Obs: É necessário ter o java preferêncialmente 8 ou superior instalado para que funcione corretamente._
 
